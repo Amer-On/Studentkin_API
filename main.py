@@ -39,3 +39,7 @@ async def try_elder_def(l_name, f_name, patr):
 async def get_elder_def(group):
     return get_elder(group)
 
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="185.117.155.28", port=8000)
+
