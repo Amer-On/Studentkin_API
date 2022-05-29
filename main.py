@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import uvicorn
 from pandas_check import *
+from checker import *
 from users import *
 from elders import try_elder, get_elder
 
@@ -18,15 +19,14 @@ async def try_group_with_flow_def(flow, group):
 async def try_student_def(group, first_name, last_name, patronymic):
     return try_student(group, first_name, last_name, patronymic)
 
-@app.get("/go_to_base/{mail}/{group}/{last_name}/{first_name}/{patronymic}/{password}")
-async def go_to_base_def(mail, group, last_name, first_name, patronymic, password):
-    if find_user(mail):
-        return "Указанный mail уже существует"
-    valid = check_valid_reg(mail, group, last_name, first_name, patronymic)
-    if valid != "True":
-        return valid
-    go_to_base(mail, group, last_name, first_name, patronymic, password)
-    return "OK"
+@app.get("/reg_validness/{email}/{group}/{last_name}/{first_name}/{patronymic}/{password}")
+async def reg_validness(email, group, last_name, first_name, patronymic):
+    response = {
+        "email": "mail_busy" if find_user(email) else check_email(email),
+        "group": "valid" if try_group(group) else "invalid",
+        "name": "valid" if try_student(group, last_name, first_name, patronymic) else "invalid"
+    }
+    return response
 
 @app.get("/delete_user/{mail}")
 async def delete_user_def(mail):
@@ -43,4 +43,5 @@ async def get_elder_def(group):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="185.117.155.28", port=8000)
+    # uvicorn.run(app, host="127.0.0.1", port=8000) # localhost
 
