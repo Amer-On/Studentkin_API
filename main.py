@@ -20,11 +20,11 @@ async def try_student_def(group, first_name, last_name, patronymic):
 
 @app.get("/go_to_base/{email}/{group}/{last_name}/{first_name}/{patronymic}/{password}")
 async def gtb(group, last_name, first_name, patronymic, password):
-    try:
-        go_to_base(email, group, last_name, first_name, patronymic, password)
-        return "OK"
-    except:
-        return "NOT OK"
+    # try:
+    go_to_base(email, group, last_name, first_name, patronymic, password)
+    #     return "OK"
+    # except:
+    #     return "NOT OK"
 
 @app.get("/reg_validness/{email}/{group}/{last_name}/{first_name}/{patronymic}/{password}")
 async def reg_validness(email, group, last_name, first_name, patronymic):
