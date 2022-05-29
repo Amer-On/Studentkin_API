@@ -19,7 +19,7 @@ async def try_student_def(group, first_name, last_name, patronymic):
     return try_student(group, first_name, last_name, patronymic)
 
 @app.get("/go_to_base/{email}/{group}/{last_name}/{first_name}/{patronymic}/{password}")
-async def gtb(group, last_name, first_name, patronymic, password):
+async def gtb(email, group, last_name, first_name, patronymic, password):
     # try:
     go_to_base(email, group, last_name, first_name, patronymic, password)
     #     return "OK"
