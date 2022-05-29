@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import uvicorn
-from pandas_check import *
 from checker import *
 from users import *
 from elders import try_elder, get_elder
