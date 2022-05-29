@@ -72,6 +72,4 @@ if __name__ == "__main__":
     main()
     go_to_elders()
     delete_null()
-    #get_elder("ИДБ-21-07")
-    #try_elder("Козлова", "Евгения", "Игоревна")
 

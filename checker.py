@@ -22,7 +22,6 @@ def try_group(group):
                     return True
     return False
 
-
 def try_group_with_flow(flow, group):
     file = pd.read_excel('first.xls', sheet_name=flow, header=None)
     len = file.shape[1]
