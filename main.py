@@ -27,6 +27,18 @@ async def reg_validness(email, group, last_name, first_name, patronymic):
     }
     return response
 
+@app.get("/email_validness/{email}")
+async def email_validness(email):
+    return "mail_busy" if find_user(email) else check_email(email)
+
+@app.get("/group_validness/{group}")
+async def group_validness(group):
+    return "valid" if try_group(group) else "invalid"
+
+@app.get("/name_validness/{group}/{last_name}/{first_name}/{patronymic}")
+async def name_validness(group, last_name, first_name, patronymic):
+    return "valid" if try_student(group, last_name, first_name, patronymic) else "invalid"
+
 @app.get("/delete_user/{mail}")
 async def delete_user_def(mail):
     delete_user(mail)
