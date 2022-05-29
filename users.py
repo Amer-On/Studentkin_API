@@ -30,6 +30,24 @@ def find_group(mail_in):
         return e[0]
     return False
 
+def get_user_l(mail_in):
+    cur.execute(f"select last_name from users where mail='{mail_in}'")
+    for e in cur:
+        return e[0]
+    return "False"
+
+def get_user_f(mail_in):
+    cur.execute(f"select first_name from users where mail='{mail_in}'")
+    for e in cur:
+        return e[0]
+    return "False"
+
+def get_user_p(mail_in):
+    cur.execute(f"select patronymic from users where mail='{mail_in}'")
+    for e in cur:
+        return e[0]
+    return "False"
+
 def go_to_base(mail_in, group_in, l_name, f_name, patr, passwrd):
     user = (mail_in, group_in, l_name, f_name, patr, passwrd)
     cur.execute('INSERT INTO users values(?, ?, ?, ?, ?, ?)', user)

@@ -63,6 +63,18 @@ async def get_elder_def(group):
 async def gg(email):
     return find_group(email)
 
+@app.get("/get_user_l/{email}")
+async def get_user_l_def(email):
+    return get_user_l(email)
+
+@app.get("/get_user_f/{email}")
+async def get_user_f_def(email):
+    return get_user_f(email)
+
+@app.get("/get_user_p/{email}")
+async def get_user_p_def(email):
+    return get_user_p(email)
+
 if __name__ == "__main__":
     uvicorn.run(app, host="185.117.155.28", port=8000)
     # uvicorn.run(app, host="127.0.0.1", port=8000) # localhost
